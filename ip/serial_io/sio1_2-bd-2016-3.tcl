@@ -43,7 +43,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
-   create_project project_1 myproj -part xc7a200tfbg484-1
+   create_project project_1 myproj -part xc7a200tfbg484-2
 }
 
 
@@ -336,54 +336,54 @@ preplace portBus adc_clk_n -pg 1 -y -700 -defaultsOSRD
 preplace portBus adc_clk_p -pg 1 -y -720 -defaultsOSRD
 preplace portBus din_n -pg 1 -y -60 -defaultsOSRD
 preplace portBus dout -pg 1 -y -130 -defaultsOSRD
-preplace portBus adc_cnvrt_n -pg 1 -y -600 -defaultsOSRD
 preplace portBus din_p -pg 1 -y -80 -defaultsOSRD
+preplace portBus adc_cnvrt_n -pg 1 -y -600 -defaultsOSRD
 preplace portBus adc_cnvrt_p -pg 1 -y -620 -defaultsOSRD
 preplace inst util_ds_buf_1 -pg 1 -lvl 4 -y -600 -defaultsOSRD
-preplace inst convert_0 -pg 1 -lvl 3 -y -600 -defaultsOSRD
 preplace inst xlslice_0 -pg 1 -lvl 8 -y -120 -defaultsOSRD
+preplace inst convert_0 -pg 1 -lvl 3 -y -600 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 5 -y -90 -defaultsOSRD
 preplace inst bitslip_0 -pg 1 -lvl 4 -y -100 -defaultsOSRD
-preplace inst axis_clock_converter_0 -pg 1 -lvl 7 -y -150 -defaultsOSRD
 preplace inst xlconcat_0 -pg 1 -lvl 6 -y -150 -defaultsOSRD
 preplace inst proc_sys_reset_0 -pg 1 -lvl 2 -y 150 -defaultsOSRD
+preplace inst axis_clock_converter_0 -pg 1 -lvl 7 -y -150 -defaultsOSRD
 preplace inst proc_sys_reset_1 -pg 1 -lvl 2 -y 330 -defaultsOSRD
 preplace inst readout_0 -pg 1 -lvl 3 -y -400 -defaultsOSRD
 preplace inst selectio_wiz_0 -pg 1 -lvl 3 -y -30 -defaultsOSRD
 preplace inst clk_wiz_0 -pg 1 -lvl 1 -y -370 -defaultsOSRD
 preplace inst util_ds_buf_0 -pg 1 -lvl 4 -y -700 -defaultsOSRD
-preplace netloc send_bitslip_0_1 1 0 4 NJ -190 NJ -190 NJ -190 890J
 preplace netloc util_ds_buf_1_OBUF_DS_P 1 4 5 NJ -610 NJ -610 NJ -610 NJ -610 2500J
+preplace netloc send_bitslip_0_1 1 0 4 NJ -190 NJ -190 NJ -190 890J
 preplace netloc clk_wiz_0_locked 1 1 1 130
 preplace netloc util_ds_buf_0_OBUF_DS_N 1 4 5 N -690 NJ -690 NJ -690 NJ -690 2500J
-preplace netloc bitslip_0_sio_wiz_bitslip 1 2 3 530 -220 NJ -220 1570
-preplace netloc axis_clock_converter_0_m_axis_tdata 1 7 1 2300
 preplace netloc data_in_from_pins_n_1 1 0 3 NJ -60 NJ -60 NJ
 preplace netloc clk_in1_1 1 0 7 -110 -280 NJ -280 NJ -280 NJ -280 NJ -280 NJ -280 1940
-preplace netloc proc_sys_reset_1_peripheral_aresetn 1 2 5 N 370 NJ 370 NJ 370 NJ 370 1960J
+preplace netloc bitslip_0_sio_wiz_bitslip 1 2 3 530 -220 NJ -220 1570
+preplace netloc axis_clock_converter_0_m_axis_tdata 1 7 1 2300
 preplace netloc util_ds_buf_0_OBUF_DS_P 1 4 5 N -710 NJ -710 NJ -710 NJ -710 2500J
-preplace netloc readout_0_adc_readout 1 2 2 530 -500 900
-preplace netloc convert_0_convert_done 1 2 2 520 -690 880
+preplace netloc proc_sys_reset_1_peripheral_aresetn 1 2 5 N 370 NJ 370 NJ 370 NJ 370 1960J
 preplace netloc xlconstant_0_dout 1 5 1 1720
 preplace netloc xlconcat_0_dout 1 6 1 1920
+preplace netloc readout_0_adc_readout 1 2 2 530 -500 900
 preplace netloc proc_sys_reset_1_peripheral_reset 1 2 1 510
-preplace netloc convert_0_adc_convert 1 3 1 900
+preplace netloc convert_0_convert_done 1 2 2 520 -690 880
 preplace netloc selectio_wiz_0_data_in_to_device 1 3 1 NJ
-preplace netloc clk_wiz_0_clk_out1 1 1 6 140 -230 500J -230 920J -230 NJ -230 NJ -230 1930J
+preplace netloc convert_0_adc_convert 1 3 1 900
+preplace netloc clk_wiz_0_clk_out1 1 1 6 150 -230 500J -230 920J -230 NJ -230 NJ -230 1930J
 preplace netloc readout_0_clk_5_ce 1 0 4 -80 -490 NJ -490 NJ -490 880
+preplace netloc proc_sys_reset_0_peripheral_reset 1 2 2 480 150 910J
 preplace netloc proc_sys_reset_0_peripheral_aresetn 1 2 5 NJ 190 NJ 190 NJ 190 NJ 190 1950J
 preplace netloc enable_test_pattern_1 1 0 4 NJ -150 NJ -150 NJ -150 880J
-preplace netloc proc_sys_reset_0_peripheral_reset 1 2 2 480 150 910J
-preplace netloc clk_wiz_0_clk_out2 1 1 3 130J -700 NJ -700 NJ
-preplace netloc axis_clock_converter_0_m_axis_tvalid 1 7 2 2300 -170 2500J
+preplace netloc clk_wiz_0_clk_out2 1 1 3 140J -700 NJ -700 NJ
 preplace netloc readout_1_0_sio_wiz_dstrobe 1 3 4 900J -390 NJ -390 NJ -390 1950J
-preplace netloc clk_wiz_0_clk_out3 1 1 3 NJ -360 510J -130 NJ
+preplace netloc clk_wiz_0_clk_out3 1 1 3 160J -360 510J -130 NJ
+preplace netloc axis_clock_converter_0_m_axis_tvalid 1 7 2 2300 -170 2500J
+preplace netloc reset_1 1 0 2 -100 130 160
 preplace netloc data_in_from_pins_p_1 1 0 3 NJ -80 NJ -80 NJ
 preplace netloc acquire_1 1 0 3 -90J -580 NJ -580 490J
-preplace netloc reset_1 1 0 2 -100 130 150
-preplace netloc bitslip_0_sio_wiz_data_out 1 4 2 1580J -160 N
 preplace netloc xlslice_0_Dout 1 8 1 2500
 preplace netloc util_ds_buf_1_OBUF_DS_N 1 4 5 NJ -590 NJ -590 NJ -590 NJ -590 2500J
+preplace netloc bitslip_0_sio_wiz_data_out 1 4 2 1580J -160 N
 levelinfo -pg 1 -130 40 320 710 1410 1660 1830 2140 2410 2530 -top -1190 -bot 420
 ",
 }
@@ -402,6 +402,4 @@ levelinfo -pg 1 -130 40 320 710 1410 1660 1830 2140 2410 2530 -top -1190 -bot 42
 
 create_root_design ""
 
-
-common::send_msg_id "BD_TCL-1000" "WARNING" "This Tcl script was generated from a block design that has not been validated. It is possible that design <$design_name> may result in errors during validation."
 
