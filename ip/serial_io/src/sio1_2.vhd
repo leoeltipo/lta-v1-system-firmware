@@ -1,7 +1,7 @@
---Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+--Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2016.3 (win64) Build 1682563 Mon Oct 10 19:07:27 MDT 2016
---Date        : Wed Nov 07 10:36:24 2018
+--Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+--Date        : Wed Nov  7 15:08:21 2018
 --Host        : L-LWL-120289 running 64-bit major release  (build 9200)
 --Command     : generate_target sio1_2.bd
 --Design      : sio1_2
@@ -34,20 +34,6 @@ entity sio1_2 is
 end sio1_2;
 
 architecture STRUCTURE of sio1_2 is
-  component sio1_2_axis_clock_converter_0_0 is
-  port (
-    s_axis_aresetn : in STD_LOGIC;
-    m_axis_aresetn : in STD_LOGIC;
-    s_axis_aclk : in STD_LOGIC;
-    s_axis_tvalid : in STD_LOGIC;
-    s_axis_tready : out STD_LOGIC;
-    s_axis_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    m_axis_aclk : in STD_LOGIC;
-    m_axis_tvalid : out STD_LOGIC;
-    m_axis_tready : in STD_LOGIC;
-    m_axis_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 )
-  );
-  end component sio1_2_axis_clock_converter_0_0;
   component sio1_2_bitslip_0_0 is
   port (
     master_reset : in STD_LOGIC;
@@ -62,17 +48,6 @@ architecture STRUCTURE of sio1_2 is
     sio_wiz_data_out : out STD_LOGIC_VECTOR ( 17 downto 0 )
   );
   end component sio1_2_bitslip_0_0;
-  component sio1_2_clk_wiz_0_0 is
-  port (
-    clk_out2_ce : in STD_LOGIC;
-    reset : in STD_LOGIC;
-    clk_in1 : in STD_LOGIC;
-    clk_out1 : out STD_LOGIC;
-    locked : out STD_LOGIC;
-    clk_out2 : out STD_LOGIC;
-    clk_out3 : out STD_LOGIC
-  );
-  end component sio1_2_clk_wiz_0_0;
   component sio1_2_convert_0_0 is
   port (
     master_reset : in STD_LOGIC;
@@ -84,6 +59,44 @@ architecture STRUCTURE of sio1_2 is
     convert_done : out STD_LOGIC
   );
   end component sio1_2_convert_0_0;
+  component sio1_2_readout_0_0 is
+  port (
+    master_reset : in STD_LOGIC;
+    clk_1 : in STD_LOGIC;
+    clk_3 : in STD_LOGIC;
+    acquire : in STD_LOGIC;
+    convert_done : in STD_LOGIC;
+    adc_readout : out STD_LOGIC;
+    sio_clk_enable : out STD_LOGIC;
+    sio_wiz_dstrobe : out STD_LOGIC;
+    clk_5_ce : out STD_LOGIC
+  );
+  end component sio1_2_readout_0_0;
+  component sio1_2_axis_clock_converter_0_0 is
+  port (
+    s_axis_aresetn : in STD_LOGIC;
+    m_axis_aresetn : in STD_LOGIC;
+    s_axis_aclk : in STD_LOGIC;
+    s_axis_tvalid : in STD_LOGIC;
+    s_axis_tready : out STD_LOGIC;
+    s_axis_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    m_axis_aclk : in STD_LOGIC;
+    m_axis_tvalid : out STD_LOGIC;
+    m_axis_tready : in STD_LOGIC;
+    m_axis_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 )
+  );
+  end component sio1_2_axis_clock_converter_0_0;
+  component sio1_2_clk_wiz_0_0 is
+  port (
+    reset : in STD_LOGIC;
+    clk_in1 : in STD_LOGIC;
+    clk_out1 : out STD_LOGIC;
+    clk_out2 : out STD_LOGIC;
+    clk_out3 : out STD_LOGIC;
+    locked : out STD_LOGIC;
+    clk_out2_ce : in STD_LOGIC
+  );
+  end component sio1_2_clk_wiz_0_0;
   component sio1_2_proc_sys_reset_0_0 is
   port (
     slowest_sync_clk : in STD_LOGIC;
@@ -112,19 +125,6 @@ architecture STRUCTURE of sio1_2 is
     peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component sio1_2_proc_sys_reset_1_0;
-  component sio1_2_readout_0_0 is
-  port (
-    master_reset : in STD_LOGIC;
-    clk_1 : in STD_LOGIC;
-    clk_3 : in STD_LOGIC;
-    acquire : in STD_LOGIC;
-    convert_done : in STD_LOGIC;
-    adc_readout : out STD_LOGIC;
-    sio_clk_enable : out STD_LOGIC;
-    sio_wiz_dstrobe : out STD_LOGIC;
-    clk_5_ce : out STD_LOGIC
-  );
-  end component sio1_2_readout_0_0;
   component sio1_2_selectio_wiz_0_0 is
   port (
     data_in_from_pins_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -208,6 +208,20 @@ architecture STRUCTURE of sio1_2 is
   signal NLW_proc_sys_reset_1_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_1_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_readout_0_sio_clk_enable_UNCONNECTED : STD_LOGIC;
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of clk_100 : signal is "xilinx.com:signal:clock:1.0 CLK.CLK_100 CLK";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of clk_100 : signal is "XIL_INTERFACENAME CLK.CLK_100, CLK_DOMAIN sio1_2_clk_100, FREQ_HZ 100000000, PHASE 0.000";
+  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, POLARITY ACTIVE_HIGH";
+  attribute X_INTERFACE_INFO of adc_clk_n : signal is "xilinx.com:signal:clock:1.0 CLK.ADC_CLK_N CLK";
+  attribute X_INTERFACE_PARAMETER of adc_clk_n : signal is "XIL_INTERFACENAME CLK.ADC_CLK_N, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 150000000, PHASE 0.0";
+  attribute X_INTERFACE_INFO of adc_clk_p : signal is "xilinx.com:signal:clock:1.0 CLK.ADC_CLK_P CLK";
+  attribute X_INTERFACE_PARAMETER of adc_clk_p : signal is "XIL_INTERFACENAME CLK.ADC_CLK_P, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 150000000, PHASE 0.0";
+  attribute X_INTERFACE_INFO of adc_cnvrt_n : signal is "xilinx.com:signal:clock:1.0 CLK.ADC_CNVRT_N CLK";
+  attribute X_INTERFACE_PARAMETER of adc_cnvrt_n : signal is "XIL_INTERFACENAME CLK.ADC_CNVRT_N, CLK_DOMAIN sio1_2_util_ds_buf_1_0_OBUF_DS_N, FREQ_HZ 100000000, PHASE 0.000";
+  attribute X_INTERFACE_INFO of adc_cnvrt_p : signal is "xilinx.com:signal:clock:1.0 CLK.ADC_CNVRT_P CLK";
+  attribute X_INTERFACE_PARAMETER of adc_cnvrt_p : signal is "XIL_INTERFACENAME CLK.ADC_CNVRT_P, CLK_DOMAIN sio1_2_util_ds_buf_1_0_OBUF_DS_P, FREQ_HZ 100000000, PHASE 0.000";
 begin
   acquire_1 <= acquire;
   adc_clk_n(0) <= util_ds_buf_0_OBUF_DS_N(0);
