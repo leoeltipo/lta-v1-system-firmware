@@ -463,6 +463,21 @@ set_property IOSTANDARD LVCMOS25 [get_ports ANA_16]
 #set_property IOSTANDARD LVCMOS25 [get_ports ANA_30]
 #set_property IOSTANDARD LVCMOS25 [get_ports ANA_31]
 
+# FLASH
+#set_property PACKAGE_PIN L12 [get_ports FPGA_CCLK]
+#set_property IOSTANDARD LVCMOS25 [get_ports FPGA_CCLK]
+set_property PACKAGE_PIN T19 [get_ports FLASH_CS]
+set_property IOSTANDARD LVCMOS25 [get_ports FLASH_CS]
+
+set_property PACKAGE_PIN P22 [get_ports FLASH_D0]
+set_property PACKAGE_PIN R22 [get_ports FLASH_D1]
+set_property PACKAGE_PIN P21 [get_ports FLASH_D2]
+set_property PACKAGE_PIN R21 [get_ports FLASH_D3]
+set_property IOSTANDARD LVCMOS25 [get_ports FLASH_D0]
+set_property IOSTANDARD LVCMOS25 [get_ports FLASH_D1]
+set_property IOSTANDARD LVCMOS25 [get_ports FLASH_D2]
+set_property IOSTANDARD LVCMOS25 [get_ports FLASH_D3]
+
 #set_input_delay -clock [get_clocks [get_clocks -of_objects [get_pins ublaze_subsystem_i/ad_4ch/inst/ad_controller_4ch_i/clk_wiz/inst/mmcm_adv_inst/CLKOUT0]]] 5.000 [get_ports ADC_DA_B_P]
 #set_input_delay -clock [get_clocks [get_clocks -of_objects [get_pins ublaze_subsystem_i/ad_4ch/inst/ad_controller_4ch_i/clk_wiz/inst/mmcm_adv_inst/CLKOUT0]]] 1.000 [get_ports ADC_DCOB_P]
 

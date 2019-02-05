@@ -85,4 +85,11 @@ CCD Controller Firmware integrating the following components:
 	Block that allows capturing and storing raw data from A/D video channels to send later
 	using a lower transfer speed. The block can capture 1, 2 or 4 video channels using the
 	configuration registers. Software driver smart_buffer.h/.c.
+	This block was modified and the memory had to be reduced (64 KSamples total buffer).
+
+* Flash Memory
+	A special SPI peripheral was added to access the on-board non-volatile flash memory.
+	After the FPGA is programmed from this flash, the SPI block can access it and reads
+	pre-loaded ID and IP information. This information is used to re-program the lower
+	byte of both IP and MAC addresses.
 	
