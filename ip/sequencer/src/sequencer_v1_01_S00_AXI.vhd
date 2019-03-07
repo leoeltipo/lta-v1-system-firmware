@@ -132,8 +132,6 @@ architecture arch_imp of sequencer_v1_01_S00_AXI is
     signal memory_addr_b        : std_logic_vector(31 downto 0);
                 
     
-
-
     --------------------------------------------------
     --- Sequencer microcontroler component
     --------------------------------------------------
@@ -158,13 +156,13 @@ architecture arch_imp of sequencer_v1_01_S00_AXI is
         clka : IN STD_LOGIC;
         ena : IN STD_LOGIC;
         wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-        addra : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+        addra : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
         dina : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         douta : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         clkb : IN STD_LOGIC;
         enb : IN STD_LOGIC;
         web : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-        addrb : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+        addrb : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
         dinb : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         doutb : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
       );
@@ -498,13 +496,13 @@ port map (clock_mc => S_AXI_ACLK,
             clka => S_AXI_ACLK,
             ena => '1',
             wea(0) => slv_reg2(0),
-            addra => slv_reg3 (7 downto 0),
+            addra => slv_reg3 (9 downto 0),
             dina => slv_reg4,
             douta => memory_data_out_axi,
             clkb => S_AXI_ACLK,
             enb => '1',
             web(0) => '0',
-            addrb => memory_addr_b(7 downto 0),
+            addrb => memory_addr_b(9 downto 0),
             dinb => (others => '0'),
             doutb => memory_data_out
           );
